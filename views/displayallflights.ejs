@@ -1,0 +1,121 @@
+<style>
+    .maincontainer {
+
+        background: #0419a0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        width: 50%;
+        height: auto;
+        background: #fff;
+        border-radius: 10px;
+        padding: 10px;
+
+    }
+
+
+
+    .heading {
+        font-size: 20px;
+        letter-spacing: 1px;
+        font-weight: bold;
+        color: #0419a0;
+        margin-bottom: 10px;
+
+    }
+
+    .buttonstyle {
+
+        width: 100%;
+    }
+
+    .daysstyle {
+        justify-content: space-evenly;
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+    }
+</style>
+
+<html>
+
+<head>
+    <title>FLIGHT DISPLAY</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+
+<body>
+    <div class="maincontainer">
+        <div class="box">
+            <div class="heading">
+                <a href="/flight/flightinterface"><img src="/images/plusicon.png" width="25"></a>
+
+                <img src="/images/flighticon.png" width="35">
+
+                List Of Flights
+            </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Flight Name</th>
+                        <th scope="col">days/<br>Seats</th>
+                        <th scope="col">Source city</th>
+                        <th scope="col">Destination city</th>
+                        <th scope="col">Company</th>
+                        <th scope="col"> Logo</th>
+                        <th scope="col"> Edit/Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <% data.map((item)=>{%>
+                            <th scope="row">
+                                <%= item.flightname%><br>
+                                    <%= item.types%>
+                            </th>
+                            <td>
+                                <%= item.days%><br>
+                                    <%= item.totalseats%><br>
+
+                            </td>
+                            <td>
+                                <%= item.source%><br>
+                                    <%= item.departuretime%><br>
+
+                            </td>
+                            <td>
+                                <%= item.destination%><br>
+                                    <%= item.arrivaltime%><br>
+
+                            </td>
+                            <td>
+                                <%= item.company%><br>
+                            </td>
+                            <td>
+                                <a href="/flight/searchbyidforimages?fid=<%=item.flightid%>">
+                                    <img src="/images/<%= item.logo%>" width="40"></img></a>
+                            </td>
+                            <td>
+                                <a href="/flight/searchbyid?fid=<%=item.flightid%>">Edit/Delete</a>
+
+                            </td>
+
+
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
